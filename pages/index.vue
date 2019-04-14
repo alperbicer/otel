@@ -34,12 +34,12 @@ import AppRegister from '~/components/Register.vue'
 import AppFooter from '~/components/Footer.vue'
 
 export default {
-		components: {
-				AppHeader,
-				AppSearch,
-				AppRegister,
-				AppFooter
-		}
+	components: {
+		AppHeader,
+		AppSearch,
+		AppRegister,
+		AppFooter
+	}
 }
 </script>
 

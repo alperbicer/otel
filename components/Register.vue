@@ -16,7 +16,7 @@
         </h3>
         <div class="soc-log fl-wrap">
           <p>For faster login or register use your social account.</p>
-          <a href="#" class="facebook-log">
+          <a @click="facebook" class="facebook-log">
             <i class="fa fa-facebook-official"></i>Log in with Facebook
           </a>
           <a href="#" class="twitter-log">
@@ -111,5 +111,17 @@
       </div>
     </div>
   </div>
-  <!--register form end -->
 </template>
+
+<script>
+export default {
+  methods: {
+    async facebook(){
+      debugger;
+       await this.$auth.loginWith('facebook').catch(e => {
+        this.$toast.show('Error', {icon: "fingerprint"});
+      })
+    },
+  } 
+}
+</script>

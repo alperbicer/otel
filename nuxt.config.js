@@ -4,6 +4,9 @@ const pkg = require('./package')
 module.exports = {
   mode: 'universal',
 
+  router: {
+    middleware: ['auth']
+  },
   /*
   ** Headers of the page
   */
@@ -33,7 +36,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+ loading: '~/components/Loading.vue',
 
   /*
   ** Global CSS
@@ -45,13 +48,49 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+ plugins: ['~plugins/vee.js',{ src:'~plugins/spinners.js', ssr: false },{ src:'~plugins/auth.js', ssr: false },'~plugins/axios.js'],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
+
+  axios: {
+    baseURL: '/alperbicer.com'
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {url: '/user/login', method: 'post', propertyName: 'token' },
+          logout: false,
+          user: {url: '/user/user', method: 'get', propertyName: 'data'},
+        },
+        tokenRequired: true,
+        tokenType: 'Bearer'
+      },
+      facebook: {
+        client_id: '',
+        userinfo_endpoint: false,
+        scope: ['public_profile', 'email'],
+        redirect_uri:'http://localhost:3000/callback'
+      },
+      google: {
+        client_id: '',
+        user:false,
+        redirect_uri:'http://localhost:3000/callback'
+
+      },
+    },
+    redirect: {
+      login: '/?login=1',
+      logout: '/',
+    }
+  },
 
   /*
   ** Build configuration
@@ -60,6 +99,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+   vendor: ['vee-validate'],
     extend(config, ctx) {
     }
   }
