@@ -23,10 +23,10 @@ module.exports = {
     link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=latin-ext' },
-      { rel: 'stylesheet', href: 'otel/css/style.css' },
-      { rel: 'stylesheet', href: 'otel/css/color.css' },
-      { rel: 'stylesheet', href: 'otel/css/plugins.css' },
-      { rel: 'stylesheet', href: 'otel/css/reset.css' }
+      { rel: 'stylesheet', href: '/css/style.css' },
+      { rel: 'stylesheet', href: '/css/color.css' },
+      { rel: 'stylesheet', href: '/css/plugins.css' },
+      { rel: 'stylesheet', href: '/css/reset.css' }
 		]
   },
 
