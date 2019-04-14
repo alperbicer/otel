@@ -3,8 +3,8 @@ const pkg = require('./package')
 
 module.exports = {
   mode: 'universal',
-  router: { base: '/otel' },
-  
+  router: { base: '/alperbicer.github.io/otel' },
+
   /*
   ** Headers of the page
   */
