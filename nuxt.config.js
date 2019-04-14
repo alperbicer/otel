@@ -4,8 +4,6 @@ const pkg = require('./package')
 module.exports = {
   mode: 'universal',
 
-  router: { base: 'https://alperbicer.com/otel' },
-
   /*
   ** Headers of the page
   */
