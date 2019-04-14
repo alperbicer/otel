@@ -243,10 +243,8 @@ blockquote p {
 .shapes-bg-small:before{
 	background-attachment:scroll;
 	background-size:cover;
-	background-image:url(/_nuxt/assets/images/bg/shapes-small.png);
 }
 .shapes-bg-big:before{
-	background-image:url(/_nuxt/assets/images/bg/shapes-big.png);
 }
 .respimg {
 	width:100%;
@@ -5322,7 +5320,6 @@ footer.main-footer.fixed-footer {
 .time-line-icon {
 	position:relative;
 	margin-bottom:30px;
-	background:url(../images/clouds.png) no-repeat center;
 }
 .tl-text i{
     font-size: 65px;

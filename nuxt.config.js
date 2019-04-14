@@ -15,18 +15,18 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     script: [
-			{ src: '/otel/js/jquery.min.js' },
-			{ src: '/otel/js/plugins.js' },
-			{ src: '/otel/js/scripts.js' },
-			{ src: '/otel/js/jquery.min.js' },
+			{ src: '/js/jquery.min.js' },
+			{ src: '/js/plugins.js' },
+			{ src: '/js/scripts.js' },
+			{ src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete' },
 		],
     link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=latin-ext' },
-      { rel: 'stylesheet', href: '/otel/css/style.css' },
-      { rel: 'stylesheet', href: '/otel/css/color.css' },
-      { rel: 'stylesheet', href: '/otel/css/plugins.css' },
-      { rel: 'stylesheet', href: '/otel/css/reset.css' }
+      { rel: 'stylesheet', href: '/css/style.css' },
+      { rel: 'stylesheet', href: '/css/color.css' },
+      { rel: 'stylesheet', href: '/css/plugins.css' },
+      { rel: 'stylesheet', href: '/css/reset.css' }
 		]
   },
 
@@ -39,7 +39,7 @@ module.exports = {
   ** Global CSS
   */
  css: [
-   '~assets/scss/main.scss',
+   '~/assets/scss/main.scss',
   ],
 
   /*
