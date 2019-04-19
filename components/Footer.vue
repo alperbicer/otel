@@ -1,5 +1,4 @@
 <template>
-  <!--footer -->
   <footer class="main-footer dark-footer">
     <div class="container">
       <div class="row">
@@ -167,5 +166,4 @@
       </div>
     </div>
   </footer>
-  <!--footer end  -->
 </template>

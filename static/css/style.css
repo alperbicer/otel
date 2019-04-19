@@ -1359,8 +1359,8 @@ section.gray-section .section-separator {
 .soc-log a.facebook-log {
 	background:#3b5998;
 }
-.soc-log a.twitter-log {
-	background:#55acee;
+.soc-log a.google-log {
+	background: #DD4B39;
 }
 .close-reg:hover  , .custom-form .log-submit-btn:hover , .soc-log a:hover{
 	background: #2F3B59;
@@ -6094,7 +6094,7 @@ footer.main-footer.fixed-footer {
 .share-icon-facebook:before  {
     content: "\f09a";
 }
-.share-icon-twitter:before {
+.share-icon-google:before {
     content: "\f099";
 }
 .share-icon-tumblr:before {

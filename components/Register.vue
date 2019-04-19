@@ -16,11 +16,11 @@
         </h3>
         <div class="soc-log fl-wrap">
           <p>For faster login or register use your social account.</p>
-          <a @click="facebook" class="facebook-log">
+          <a @click="facebook()" class="facebook-log">
             <i class="fa fa-facebook-official"></i>Log in with Facebook
           </a>
-          <a href="#" class="twitter-log">
-            <i class="fa fa-twitter"></i> Log in with Twitter
+          <a @click="google" class="google-log">
+            <i class="fa fa-google"></i> Log in with Google
           </a>
         </div>
         <div class="log-separator fl-wrap">
@@ -115,12 +115,53 @@
 
 <script>
 export default {
+  data(){
+    return {
+      loginForm: {
+        email:'',
+        password:''
+      }
+
+    }
+  },
   methods: {
-    async facebook(){
-      debugger;
+    async google(){
+      await this.$auth.loginWith('google').catch(e => {
+        this.$toast.show('Error', {icon: "fingerprint"});
+      })
+    },
+    async facebook() {
        await this.$auth.loginWith('facebook').catch(e => {
         this.$toast.show('Error', {icon: "fingerprint"});
       })
+    },
+    async login() {
+      try {
+        this.$nextTick(() => {
+          this.$nuxt.$loading.start()
+        });
+        await this.$auth.loginWith('local', {
+          data: {
+            "email": this.loginForm.email,
+            "password": this.loginForm.password
+          }
+        })
+
+        if (this.$auth.loggedIn) {
+          this.$toast.success('Successfully Logged In', {icon: "done"});
+        }
+      } catch (e) {
+        this.$toast.error('Username or Password wrong', {icon: "error"});
+      } finally {
+        this.$nuxt.$loading.finish()
+      }
+    },
+    check(){
+      console.log(this.$auth.loggedIn)
+    },
+    logout() {
+      this.$toast.show('Logging out...', {icon: "fingerprint"});
+      this.$auth.logout()
     },
   } 
 }

@@ -12,17 +12,17 @@ export default async function ({ app }) {
     const authStrategyConverted = authStrategy === 'facebook' ? 'fb' : 'google';
     const url = `/user/signup/${authStrategyConverted}?token=${token}`;
 
-    try {
-      const {data} = await app.$axios.$post(url, null);
-      auth.setToken('local', "Bearer "+ data.access_token);
-      setTimeout( async () => {
-        auth.setStrategy('local');
-        setTimeout( async () => {
-          await auth.fetchUser();
-        })
-      });
-    } catch (e) {
-      console.log(e);
-    }
+    // try {
+    //   const {data} = await app.$axios.$post(url, null);
+    //   auth.setToken('local', "Bearer "+ data.access_token);
+    //   setTimeout( async () => {
+    //     auth.setStrategy('local');
+    //     setTimeout( async () => {
+    //       await auth.fetchUser();
+    //     })
+    //   });
+    // } catch (e) {
+    //   console.log(e);
+    // }
   }
 }

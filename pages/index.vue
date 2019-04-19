@@ -1,23 +1,17 @@
 <template>
   <div>
-    <!--loader-->
     <div class="loader-wrap">
       <div class="pin"></div>
       <div class="pulse"></div>
     </div>
-    <!--loader end-->
-    <!-- Main  -->
     <div id="main">
       <app-header></app-header>
-      <!--  wrapper  -->
       <div id="wrapper">
-        <!-- Content-->
         <div class="content">
 					<app-search></app-search>
+					<app-most-city></app-most-city>
         </div>
-        <!-- Content end -->
       </div>
-      <!-- wrapper end -->
       <app-footer></app-footer>
       <app-register></app-register>
       <a class="to-top">
@@ -30,6 +24,7 @@
 <script>
 import AppHeader from '~/components/Header.vue'
 import AppSearch from '~/components/Search.vue'
+import AppMostCity from '~/components/MostCity.vue'
 import AppRegister from '~/components/Register.vue'
 import AppFooter from '~/components/Footer.vue'
 
@@ -37,6 +32,7 @@ export default {
 	components: {
 		AppHeader,
 		AppSearch,
+		AppMostCity,
 		AppRegister,
 		AppFooter
 	}
