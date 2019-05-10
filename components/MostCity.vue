@@ -11,15 +11,15 @@
         <div class="gallery-item" v-for="(item, index) in items" :key="index">
           <div class="grid-item-holder">
             <div class="listing-item-grid">
-              <img :src="'_nuxt/assets/images/most-city/' + item + '.jpg'" alt>
+              <img :src="item.img" alt>
               <div class="listing-counter">
-                <span>10</span> Locations
+                <span>{{ item.roomCount }}</span> Locations
               </div>
               <div class="listing-item-cat">
                 <h3>
-                  <a href="listing.html">Conference and Event</a>
+                  <a href="listing.html">{{ item.name }}</a>
                 </h3>
-                <p>Constant care and attention to the patients makes good record</p>
+                <!-- <p>Constant care and attention to the patients makes good record</p> -->
               </div>
             </div>
           </div>
@@ -40,8 +40,16 @@
 export default {
   data() {
     return {
-      items: [1, 2, 3, 4, 5],
+      items: [],
     };
+  },
+  async created() {
+    await this.$axios.get('homepage/mostVisitCities')
+      .then((res) => {
+        if (res.status === 200) {
+          this.items = res.data.datas;
+        }
+      });
   },
 }
 </script>

@@ -19,8 +19,10 @@
     "cross-env": "^5.2.0",
     "epic-spinners": "1.0.4",
     "express": "^4.16.4",
+    "jquery": "3.4.1",
     "nuxt": "^2.4.0",
-    "vee-validate": "2.2.2"
+    "vee-validate": "2.2.2",
+    "vue-slick": "1.1.15"
   },
   "devDependencies": {
     "node-sass": "4.11.0",

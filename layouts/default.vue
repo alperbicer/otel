@@ -1,10 +1,38 @@
 <template>
   <div>
-    <nuxt />
+    <div class="loader-wrap">
+      <div class="pin"></div>
+      <div class="pulse"></div>
+    </div>
+    <div id="main">
+      <app-navbar />
+      <nuxt />
+      <app-footer></app-footer>
+      <app-register></app-register>
+    </div>
   </div>
 </template>
 
+<script>
+import AppNavbar from '~/components/Navbar.vue';
+import AppRegister from '~/components/Register.vue'
+import AppFooter from '~/components/Footer.vue'
+
+export default {
+  components: {
+    AppNavbar,
+    AppRegister,
+		AppFooter
+  }
+}
+</script>
+
+
 <style>
+:root {
+  --main-bg-color: red;
+}
+
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;

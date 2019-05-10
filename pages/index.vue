@@ -1,41 +1,29 @@
 <template>
   <div>
-    <div class="loader-wrap">
-      <div class="pin"></div>
-      <div class="pulse"></div>
-    </div>
-    <div id="main">
-      <app-header></app-header>
-      <div id="wrapper">
-        <div class="content">
-					<app-search></app-search>
-					<app-most-city></app-most-city>
-        </div>
-      </div>
-      <app-footer></app-footer>
-      <app-register></app-register>
-      <a class="to-top">
-        <i class="fa fa-angle-up"></i>
-      </a>
-    </div>
+		<div id="wrapper">
+			<div class="content">
+				<app-search></app-search>
+				<app-most-city></app-most-city>
+				<app-popular-listing></app-popular-listing>
+			</div>
+		</div>
+		<a class="to-top">
+			<i class="fa fa-angle-up"></i>
+		</a>
   </div>
 </template>
 
 <script>
-import AppHeader from '~/components/Header.vue'
-import AppSearch from '~/components/Search.vue'
-import AppMostCity from '~/components/MostCity.vue'
-import AppRegister from '~/components/Register.vue'
-import AppFooter from '~/components/Footer.vue'
+import AppSearch from '~/components/Search.vue';
+import AppMostCity from '~/components/MostCity.vue';
+import AppPopularListing from '~/components/PopularListing.vue';
 
 export default {
 	components: {
-		AppHeader,
 		AppSearch,
 		AppMostCity,
-		AppRegister,
-		AppFooter
-	}
+		AppPopularListing,
+	},
 }
 </script>
 

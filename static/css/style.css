@@ -4414,6 +4414,10 @@ article .list-single-main-item {
 	padding-left:10px;
 }
 /*------ Grid Gallery------------------------------------------------*/
+.gallery-items {
+	position: relative !important;
+	height: auto !important;
+}
 .gallery-items.mr-bot {
 	margin-bottom:40px;
 }

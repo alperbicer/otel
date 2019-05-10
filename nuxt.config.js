@@ -1,4 +1,5 @@
-const pkg = require('./package')
+const pkg = require('./package');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   mode: 'universal',
@@ -12,20 +13,25 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    script: [
-      { src: '/js/jquery.min.js' },
-      { src: '/js/plugins.js' },
-      { src: '/js/scripts.js' },
-      { src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete' },
-    ],
     link: [
+      { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' },
+			{ rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=latin-ext' },
-      { rel: 'stylesheet', href: '/css/style.css' },
-      { rel: 'stylesheet', href: '/css/color.css' },
-      { rel: 'stylesheet', href: '/css/plugins.css' },
-      { rel: 'stylesheet', href: '/css/reset.css' }
-    ]
+      { rel: 'stylesheet', href: 'css/reset.css' },
+      { rel: 'stylesheet', href: 'css/plugins.css' },
+      { rel: 'stylesheet', href: 'css/style.css' },
+      { rel: 'stylesheet', href: 'css/color.css' }
+    ],
+    script: [
+      { src: 'js/jquery.min.js', body: true },
+      { src: 'js/plugins.js', body: true },
+      { src: 'js/scripts.js', body: true },
+      { src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA4-GoZzOqYTvxMe52YQZch5JaCFN6ACLg&libraries=places' },
+      { src: 'js/map_infobox.js', body: true },
+      { src: 'js/markerclusterer.js', body: true },
+      { src: 'js/maps.js', body: true }
+    ],
   },
   modules: [
     '@nuxtjs/axios',
@@ -68,20 +74,32 @@ module.exports = {
     },
   },
   axios: {
-    baseURL: 'https://private-1e6b1d-tfr.apiary-mock.com/Product/GetProductById/1'
+    baseURL: 'http://acayiptarifler.xyz/api/'
   },
   plugins: [
     '~/plugins/vee.js',
     { src: '~/plugins/spinners.js', ssr: false },
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    { src: '~/plugins/vue-slick', ssr: false }
   ],
   loading: '~/components/Loading.vue',
   css: [
     '~/assets/scss/main.scss',
   ],
   build: {
-    vendor: ['vee-validate'],
-    extend(config, ctx) {
+    vendor: ['vee-validate', 'vue-slick'],
+    transpile: ['vue-slick'],
+    extend(config, { isClient, isServer }) {
+      if (isClient) {
+        config.devtool = '#source-map';
+      }
+      if (isServer) {
+        config.externals = [
+          nodeExternals({
+            whitelist: [/^vue-slick/]
+          })
+        ]
+      }
     }
   }
 }
