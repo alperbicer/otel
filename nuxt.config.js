@@ -2,7 +2,6 @@ const pkg = require('./package');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  mode: 'universal',
   router: {
     middleware: ['auth']
   },
@@ -14,8 +13,6 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' },
-			{ rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=latin-ext' },
       { rel: 'stylesheet', href: 'css/reset.css' },
@@ -87,6 +84,7 @@ module.exports = {
     '~/assets/scss/main.scss',
   ],
   build: {
+    publicPath: '/assets/',
     vendor: ['vee-validate', 'vue-slick'],
     transpile: ['vue-slick'],
     extend(config, { isClient, isServer }) {
@@ -100,6 +98,33 @@ module.exports = {
           })
         ]
       }
-    }
-  }
+    },
+    loaders: [
+      {
+        test: /\.(scss|sass|css)$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader"
+        }]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        loader: 'url-loader',
+        query: {
+          limit: 1000,
+          name: 'img/[name].[hash:7].[ext]'
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 1000,
+          name: 'fonts/[name].[hash:7].[ext]'
+        }
+      }
+    ]
+  },
+  
 }
